@@ -20,7 +20,6 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     })
       .then(res => res.blob())
       .then(blob => {
-        // open image in new tab
         const url = URL.createObjectURL(blob)
 
         const img = new Image()
