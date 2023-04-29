@@ -9,6 +9,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
   const svg = e.currentTarget.svg.value
   const width = e.currentTarget.width.value
+  const fileType = e.currentTarget.fileType.value
 
   try {
     fetch('/api/svgpng', {
@@ -33,7 +34,10 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
           if (!ctx) return
 
           ctx.drawImage(img, 0, 0)
-          const dataURL = canvas.toDataURL('image/webp')
+
+          const format = fileType === 'webp' ? 'image/webp' : 'image/png'
+
+          const dataURL = canvas.toDataURL(format)
           const newTab = window.open()
           newTab?.document.write(`<img src="${dataURL}" />`)
         }
@@ -78,10 +82,35 @@ export default function Home () {
             className='w-full p-4 mt-2 text-black border border-gray-300 rounded-lg'
           />
         </div>
+        <div className='flex flex-col items-center justify-center w-full mt-8'>
+          <p className='text-xl font-bold'>Select file type</p>
+          <div className='flex items-center justify-center p-4 mt-2 border border-white rounded-lg'>
+            <label htmlFor='png' className='mr-4'>
+              PNG
+            </label>
+            <input
+              id='png'
+              type='radio'
+              name='fileType'
+              value='png'
+              className='mr-4'
+            />
+            <label htmlFor='webp' className='mr-4'>
+              WebP
+            </label>
+            <input
+              id='webp'
+              type='radio'
+              name='fileType'
+              value='webp'
+              className='mr-4'
+            />
+          </div>
+        </div>
         <div className='flex flex-col items-center justify-center'>
           <button
             type='submit'
-            className='w-full p-4 mt-8 text-white transition-all duration-300 bg-black border border-white rounded-lg hover:bg-white hover:text-black'
+            className='w-full p-4 mt-8 text-black transition-all duration-300 bg-white border border-white rounded-lg hover:bg-black hover:text-white'
           >
             Convert
           </button>
