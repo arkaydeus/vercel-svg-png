@@ -15,7 +15,7 @@ const opts = {
   font: {
     fontFiles: [
       // join(resolve('.'), 'fonts', 'OpenSans-Medium.ttf'),
-      join(process.cwd(), 'fonts', 'RobotoMono-Regular')
+      join(process.cwd(), 'fonts', 'RobotoMono-Regular.ttf')
     ], // Load custom fonts.
     // fontFiles: ['fonts/RobotoMono-Regular.ttf'],
     loadSystemFonts: false, // It will be faster to disable loading system fonts.
@@ -29,8 +29,12 @@ export default function handler (
 ) {
   const { svg, width } = req.body
 
-  console.log('svg', svg)
+  // console.log('svg', svg)
   console.log('width', width)
+  console.log(
+    'font path',
+    join(process.cwd(), 'fonts', 'RobotoMono-Regular.ttf')
+  )
 
   if (width) {
     opts.fitTo.value = Number(width)
