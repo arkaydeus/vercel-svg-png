@@ -13,11 +13,11 @@ const opts = {
     value: 1200
   },
   font: {
-    // fontFiles: [
-    //   join(resolve('.'), 'fonts', 'OpenSans-Medium.ttf'),
-    //   join(resolve('.'), 'fonts', 'RobotoMono-Regular')
-    // ], // Load custom fonts.
-    fontFiles: ['fonts/RobotoMono-Regular.ttf'],
+    fontFiles: [
+      // join(resolve('.'), 'fonts', 'OpenSans-Medium.ttf'),
+      join(process.cwd(), 'fonts', 'RobotoMono-Regular')
+    ], // Load custom fonts.
+    // fontFiles: ['fonts/RobotoMono-Regular.ttf'],
     loadSystemFonts: false, // It will be faster to disable loading system fonts.
     defaultFontFamily: 'Roboto Mono' // Set default font family.
   }
