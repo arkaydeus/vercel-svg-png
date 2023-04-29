@@ -36,3 +36,13 @@ The `fonts` section of the options object is as follows. You can find it in src/
 
 ### next.config.js
 We've added experimental nftTracing and outputFileTracing.
+
+```js
+const nextConfig = {
+  reactStrictMode: true,
+  experimental: {
+    nftTracing: true
+  },
+  outputFileTracing: true
+}
+```
